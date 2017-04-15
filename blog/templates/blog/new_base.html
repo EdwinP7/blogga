@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<html>
+<head>
+    <title>Edwin Perea Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Edwin Perea">
+    <meta name="description" content="Edwin Perea | Computer Science Student (CSU-Fresno) | Portfolio Site">
+    <meta name="keywords" content="Edwin Perea, Programmer, Python, Django, Developer, Web Developer, Fresno, Clovis, California">
+    <link rel="stylesheet" href="{% static 'css/new_blog.css' %}">
+    <link rel="stylesheet" media="screen and (max-width: 750px)" href="{% static 'css/new_less.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/new_blog.css' %}">
+</head>
+
+<body>
+<div class="atf">
+
+    <header id ="masthead">
+
+            <div id="logo-container">
+                <a id="logo" href="//edwinperea.com">Edwin Perea</a>
+            </div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+                <p>Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Logout</a>)</small></p>
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            {% endif %}
+            <div id="social-media">
+              <ul>
+                <li>
+                  <a id="git" href="https://github.com/EdwinP7?tab=repositories"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/sean.chan.5011?ref=bookmarks"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                  <a href="mailto:edwinperea7@gmail.com"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/edwinseanp"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+    </header>
+
+    <section id="about">
+      <div id="about-wrapper">
+        <h1>About me</h1>
+        <p>I am a college student majoring in computer science. My goal is to work on software that can have a positive influence on people in my locality or across the globe. Below are some of my current and previous projects. </p>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h1>Some of my projects, more on <a href="https://github.com/EdwinP7?tab=repositories">Github</a></h1>
+        <h2>  <div id="bl1"></div> <div id="bl2"></div> <div id="bl3"></div><a href="https://edwinperea.pythonanywhere.com/"> Personal Blog (WiP) </a><span>Django Python</span></h2>
+        <ul>
+          <li>Personal blog created with the Django Framework, hosted on pythonanywhere</li>
+        </ul>
+        <h2>  <div id="naui1"></div> <div id="naui2"></div> <div id="naui3"></div><a href="https://github.com/mesheil/Team-Mostaccioli"> NAUI Dive Table Site </a><span>(team project) HTML5 CSS Javascript</span></h2>
+        <ul>
+          <li>Designed website which included a NAUI dive table interface with Javascript</li>
+          <li>Accurately display dive and surface time plan depending on user-input through form or graphical table</li>
+          <li>Responsible for the implementation of the dive table logic with Javascript, and design of user-input forms and interactive graph </li>
+        </ul>
+        <h2>  <div id="pix1"></div> <div id="pix2"></div> <div id="pix3"></div><a href="https://github.com/EdwinP7/150project/tree/master/SDLTemplate"> 2D Game Engine </a><span>(team project) C++</span></h2>
+        <ul>
+          <li>Created engine written in C++ with the use of the SDL library</li>
+          <li>Responsible for character 2D movement and logic, collision checking, animations, and initial game menu</li>
+          <li>Additional work included initial project design and the artwork for the game</li>
+        </ul>
+        <h1>My Personal Blog</h1>
+        {% block content %}
+        {% endblock %}
+
+    </section>
+    </div>
+
+    <footer id="site-footer">
+      <p>Edwin Perea | Programmer</p>
+    </footer>
+
+  </div>
+</body>    
+</html>
